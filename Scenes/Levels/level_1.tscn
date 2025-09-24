@@ -1,3 +1,75 @@
-[gd_scene format=3 uid="uid://ju1otv6txo0m"]
+[gd_scene load_steps=6 format=4 uid="uid://ju1otv6txo0m"]
+
+[ext_resource type="PackedScene" uid="uid://csls4q0vjvqey" path="res://Scenes/player.tscn" id="1_4dpyx"]
+[ext_resource type="TileSet" uid="uid://baumjwro03ioe" path="res://Sprites/tileset.tres" id="2_3mqfk"]
+[ext_resource type="Texture2D" uid="uid://divmryxvl32mh" path="res://Sprites/Tiles.png" id="3_3mqfk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iixi8"]
+size = Vector2(16, 8)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cyadu"]
+radius = 7.0
 
 [node name="Main" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource("1_4dpyx")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+
+[node name="Room_Template" type="StaticBody2D" parent="."]
+
+[node name="Base" type="TileMapLayer" parent="Room_Template"]
+tile_map_data = PackedByteArray("AAD+/wcAAAAHAAIAAAABAAcAAAAHAAIAAAAHAP7/AAAHAAIAAAAHAAEAAAAHAAIAAAD4//7/AAAHAAIAAAD4/wEAAAAHAAIAAAD+//j/AAAHAAIAAAABAPj/AAAHAAIAAAAHAPj/AAAHAAoAAAD4//j/AAAAAAoAAAACAPj/AAAGAAYAAAADAPj/AAAGAAYAAAAEAPj/AAAGAAYAAAAFAPj/AAAGAAYAAAAGAPj/AAAGAAYAAAD9//j/AAAGAAYAAAD8//j/AAAGAAYAAAD7//j/AAAGAAYAAAD6//j/AAAGAAYAAAD5//j/AAAGAAYAAAACAAcAAAAGAAYAAAADAAcAAAAGAAYAAAAEAAcAAAAGAAYAAAAFAAcAAAAGAAYAAAAGAAcAAAAGAAYAAAD9/wcAAAAGAAYAAAD8/wcAAAAGAAYAAAD7/wcAAAAGAAYAAAD6/wcAAAAGAAYAAAD5/wcAAAAGAAYAAAAHAPr/AAAGAAYAAGAHAPv/AAAGAAYAAGAHAPz/AAAGAAYAAGAHAP3/AAAGAAYAAGAHAAIAAAAGAAYAAGAHAAMAAAAGAAYAAGAHAAQAAAAGAAYAAGAHAAUAAAAGAAYAAGAHAAYAAAAGAAYAAGD4/wYAAAAGAAYAAFD4/wUAAAAGAAYAAFD4/wQAAAAGAAYAAFD4/wMAAAAGAAYAAFD4/wIAAAAGAAYAAFD4//3/AAAGAAYAAFD4//z/AAAGAAYAAFD4//v/AAAGAAYAAFD4//r/AAAGAAYAAFD4//n/AAAGAAYAAFAHAPn/AAAGAAYAAGD4/wcAAAAAAAoAAGAHAAcAAAAHAAoAAFA=")
+tile_set = ExtResource("2_3mqfk")
+
+[node name="WallCollider" type="CollisionPolygon2D" parent="Room_Template"]
+visible = false
+polygon = PackedVector2Array(-56, -56, -8, -56, -8, -81, -75, -81, -75, -8, -56, -8)
+
+[node name="WallCollider2" type="CollisionPolygon2D" parent="Room_Template"]
+rotation = 1.5707964
+polygon = PackedVector2Array(-56, -56, -8, -56, -8, -81, -75, -81, -75, -8, -56, -8)
+
+[node name="WallCollider3" type="CollisionPolygon2D" parent="Room_Template"]
+rotation = -1.5707964
+polygon = PackedVector2Array(-56, -56, -8, -56, -8, -81, -75, -81, -75, -8, -56, -8)
+
+[node name="WallCollider4" type="CollisionPolygon2D" parent="Room_Template"]
+rotation = 3.1415927
+polygon = PackedVector2Array(-56, -56, -8, -56, -8, -81, -75, -81, -75, -8, -56, -8)
+
+[node name="EntranceNorth" type="Node2D" parent="Room_Template"]
+
+[node name="Door" type="Node2D" parent="Room_Template/EntranceNorth"]
+
+[node name="Tunnel" type="TileMapLayer" parent="Room_Template/EntranceNorth/Door"]
+tile_map_data = PackedByteArray("AAD+//f/AAAGAAYAAGD+//b/AAAGAAYAAGABAPb/AAAGAAYAAGABAPf/AAAGAAYAAGA=")
+tile_set = ExtResource("2_3mqfk")
+
+[node name="Door_Shut" type="StaticBody2D" parent="Room_Template/EntranceNorth/Door"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Room_Template/EntranceNorth/Door/Door_Shut"]
+position = Vector2(-4, -60)
+texture = ExtResource("3_3mqfk")
+region_enabled = true
+region_rect = Rect2(11, 31, 8, 8)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Room_Template/EntranceNorth/Door/Door_Shut"]
+position = Vector2(4, -60)
+texture = ExtResource("3_3mqfk")
+region_enabled = true
+region_rect = Rect2(11, 31, 8, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Room_Template/EntranceNorth/Door/Door_Shut"]
+position = Vector2(0, -60)
+shape = SubResource("RectangleShape2D_iixi8")
+
+[node name="ExitTrigger" type="Area2D" parent="Room_Template/EntranceNorth"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Room_Template/EntranceNorth/ExitTrigger"]
+position = Vector2(0, -73)
+shape = SubResource("CircleShape2D_cyadu")
+
+[node name="PlayerSpawn" type="Node2D" parent="Room_Template/EntranceNorth"]
+position = Vector2(0, -49)
