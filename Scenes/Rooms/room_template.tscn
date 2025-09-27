@@ -22,7 +22,6 @@ tile_map_data = PackedByteArray("AAD+/wcAAAAHAAIAAAABAAcAAAAHAAIAAAAHAP7/AAAHAAI
 tile_set = ExtResource("1_11dti")
 
 [node name="WallCollider" type="CollisionPolygon2D" parent="."]
-visible = false
 polygon = PackedVector2Array(-56, -56, -8, -56, -8, -81, -75, -81, -75, -8, -56, -8)
 
 [node name="WallCollider2" type="CollisionPolygon2D" parent="."]

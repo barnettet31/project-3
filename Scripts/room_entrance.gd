@@ -42,7 +42,8 @@ func close_door():
 	
 	
 func _on_body_entered_exit_trigger(body):
-	pass
+	if body.is_in_group('Player'):
+		neighbor.player_enter(_get_neighbor_entry_direction(), body)
 
 func _get_neighbor_entry_direction()-> Room.Direction:
 	if direction == Room.Direction.NORTH:

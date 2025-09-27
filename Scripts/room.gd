@@ -43,6 +43,7 @@ func player_enter(entry_direction: Direction, player: CharacterBody2D, first_roo
 		player.global_position = entrance_east.player_spawn.global_position
 	if first_room:
 		player.global_position = global_position
+	GlobalSignals.OnPlayerEnterRoom.emit(self)
 	if enemies_in_room > 0 and not doors_always_open:
 		close_doors()
 	else: 
@@ -52,12 +53,12 @@ func _on_defeat_enemy(enemy):
 	pass
 
 func open_doors():
-	entrance_north.open_door()
-	entrance_south.open_door()
-	entrance_west.open_door()
-	entrance_east.open_door()
+	entrance_north.open_door.call_deferred()
+	entrance_south.open_door.call_deferred()
+	entrance_west.open_door.call_deferred()
+	entrance_east.open_door.call_deferred()
 func close_doors():
-	entrance_north.close_door()
-	entrance_south.close_door()
-	entrance_west.close_door()
-	entrance_east.close_door()
+	entrance_north.close_door.call_deferred()
+	entrance_south.close_door.call_deferred()
+	entrance_west.close_door.call_deferred()
+	entrance_east.close_door.call_deferred()

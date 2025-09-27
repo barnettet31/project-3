@@ -64,8 +64,9 @@ func _instantiate_rooms():
 			room.global_position = Vector2(x, y) * room_pos_offset
 			if is_first_room: 
 				first_room = room
+				first_room.player_enter.call_deferred(Room.Direction.NORTH, player, true)
 			room.initialize()
-	for room in rooms:
+	for room in rooms:	
 		var map_pos: Vector2 = _get_map_index(room)
 		var x = map_pos.x
 		var y = map_pos.y
@@ -77,10 +78,11 @@ func _instantiate_rooms():
 			room.set_neighbor.call_deferred(Room.Direction.EAST, get_room_from_map(x + 1, y))
 		if x  > 0 and _get_map(x - 1, y):
 			room.set_neighbor.call_deferred(Room.Direction.WEST, get_room_from_map(x - 1 , y))
+	first_room.player_enter.call_deferred(Room.Direction.NORTH, player, true)
 func get_room_from_map(x:int, y:int)->Room:
 	for room in rooms:
 		var pos = _get_map_index(room)
-		if pos.x != x and pos.y != y:
+		if pos.x != x or pos.y != y:
 			continue
 		return room
 	return null

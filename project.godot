@@ -14,6 +14,10 @@ config/name="project-3"
 run/main_scene="uid://ju1otv6txo0m"
 config/features=PackedStringArray("4.5", "Forward Plus")
 
+[autoload]
+
+GlobalSignals="*res://Scripts/global_signals.gd"
+
 [input]
 
 move_up={
