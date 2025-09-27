@@ -34,4 +34,4 @@ func _shoot():
 	proj.rotation = weapon_origin.rotation
 	proj.owner_character = self
 func take_damage(amount : int):
-	pass
+	print("Take Damage", amount)
