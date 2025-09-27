@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkl1yuyqtom4i"]
+
+[ext_resource type="PackedScene" uid="uid://b8pqow80ub5un" path="res://Scenes/Rooms/room_template.tscn" id="1_wdh4y"]
+[ext_resource type="PackedScene" uid="uid://dc22jp57db64h" path="res://Scenes/Enemies/enemy.tscn" id="2_wwpqg"]
+
+[node name="Room_Template" instance=ExtResource("1_wdh4y")]
+
+[node name="Enemy" parent="." index="9" instance=ExtResource("2_wwpqg")]

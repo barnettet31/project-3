@@ -1,0 +1,14 @@
+[gd_scene load_steps=6 format=3 uid="uid://b1ohcnw2irge5"]
+
+[ext_resource type="PackedScene" uid="uid://b8pqow80ub5un" path="res://Scenes/Rooms/room_template.tscn" id="1_1pe3g"]
+[ext_resource type="Script" uid="uid://bfc3hx1yvh32w" path="res://Scripts/room_item_spawner.gd" id="3_mkpsy"]
+[ext_resource type="PackedScene" uid="uid://bm2hrie7uao8y" path="res://Scenes/Items/item_health.tscn" id="3_tkrxl"]
+[ext_resource type="PackedScene" uid="uid://d1gtb7uewri7e" path="res://Scenes/Items/item_move_speed.tscn" id="4_eigse"]
+[ext_resource type="PackedScene" uid="uid://c5whak2m702hp" path="res://Scenes/Items/item_shoot_rate.tscn" id="5_fql0g"]
+
+[node name="Room_Template" instance=ExtResource("1_1pe3g")]
+doors_always_open = true
+
+[node name="RoomItemSpawner" type="Node2D" parent="." index="9"]
+script = ExtResource("3_mkpsy")
+item_scenes = Array[PackedScene]([ExtResource("3_tkrxl"), ExtResource("4_eigse"), ExtResource("5_fql0g")])

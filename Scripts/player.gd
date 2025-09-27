@@ -6,6 +6,8 @@ extends CharacterBody2D
 @onready var weapon_origin: Node2D = $Weapon
 @onready var muzzle: Node2D = $Weapon/Muzzle
 
+@export var cur_hp: int = 8
+@export var max_hp: int = 8
 @export var shoot_rate: float = 0.4
 var last_shoot_time: float 
 var projectile_scene: PackedScene = preload("res://Scenes/Projectiles/projectile.tscn")
@@ -34,4 +36,15 @@ func _shoot():
 	proj.rotation = weapon_origin.rotation
 	proj.owner_character = self
 func take_damage(amount : int):
-	print("Take Damage", amount)
+	cur_hp -= amount
+	if cur_hp <= 0:
+		die()
+
+func die():
+	pass
+
+func heal(amount: int):
+	cur_hp += amount
+	if cur_hp >= max_hp:
+		cur_hp = max_hp
+	

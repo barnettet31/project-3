@@ -12,6 +12,8 @@ var first_room_x: int = 3
 var first_room_y : int = 3 
 var first_room: Room
 var room_scene: PackedScene = preload("res://Scenes/Rooms/room_template.tscn")
+@export var first_room_scene: PackedScene 
+@export var room_scenes: Array[PackedScene]
 @export var player : CharacterBody2D
 
 func  _ready() -> void:
@@ -26,7 +28,7 @@ func _generate():
 	_check_room(first_room_x, first_room_y, Vector2.ZERO, true)
 	_instantiate_rooms()
 
-func _check_room(x:int, y:int, desired_direction: Vector2, is_first_room: bool = false ): 
+func _check_room(x:int, y:int, desired_direction: Vector2, is_first_room: bool = false): 
 	if room_count >= rooms_to_generate: 
 		return 
 	if x < 0 or x > map_size - 1 or y < 0  or y > map_size - 1: 
@@ -57,8 +59,12 @@ func _instantiate_rooms():
 		for y in range(map_size):
 			if _get_map(x, y) == false:
 				continue
-			var room: Room = room_scene.instantiate()
+			var room: Room
 			var is_first_room : bool = first_room_x == x and first_room_y == y
+			if is_first_room:
+				room = first_room_scene.instantiate()
+			else:
+				room = room_scenes[randi_range(0, len(room_scenes) -1)].instantiate()
 			get_tree().root.add_child.call_deferred(room)
 			rooms.append(room)
 			room.global_position = Vector2(x, y) * room_pos_offset

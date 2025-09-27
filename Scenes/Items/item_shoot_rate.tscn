@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5whak2m702hp"]
+
+[ext_resource type="PackedScene" uid="uid://cp21af50fybhy" path="res://Scenes/Items/item.tscn" id="1_gayc3"]
+
+[node name="Item" instance=ExtResource("1_gayc3")]
+type = 1
+value = 0.08
+
+[node name="Sprite" parent="." index="0"]
+region_rect = Rect2(10, 11, 10, 9)

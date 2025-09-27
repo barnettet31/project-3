@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://iao8bkdfs3s8"]
+
+[ext_resource type="PackedScene" uid="uid://b8pqow80ub5un" path="res://Scenes/Rooms/room_template.tscn" id="1_bclxs"]
+[ext_resource type="PackedScene" uid="uid://dc22jp57db64h" path="res://Scenes/Enemies/enemy.tscn" id="2_j74t6"]
+
+[node name="Room_Template" instance=ExtResource("1_bclxs")]
+
+[node name="Enemy" parent="." index="9" instance=ExtResource("2_j74t6")]
+position = Vector2(0, -31)
+
+[node name="Enemy2" parent="." index="10" instance=ExtResource("2_j74t6")]
+position = Vector2(-29, 29)
+
+[node name="Enemy3" parent="." index="11" instance=ExtResource("2_j74t6")]
+position = Vector2(29, 30)
