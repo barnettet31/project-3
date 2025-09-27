@@ -61,6 +61,7 @@ func open_doors():
 	entrance_south.open_door.call_deferred()
 	entrance_west.open_door.call_deferred()
 	entrance_east.open_door.call_deferred()
+	
 func close_doors():
 	entrance_north.close_door.call_deferred()
 	entrance_south.close_door.call_deferred()

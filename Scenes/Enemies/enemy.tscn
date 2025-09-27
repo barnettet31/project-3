@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dc22jp57db64h"]
+[gd_scene load_steps=5 format=3 uid="uid://dc22jp57db64h"]
 
 [ext_resource type="Script" uid="uid://cq583wikco0aa" path="res://Scripts/enemy.gd" id="1_jcvw6"]
 [ext_resource type="Texture2D" uid="uid://dj67j1veyogdi" path="res://Sprites/Creatures.png" id="2_x1rqp"]
+[ext_resource type="AudioStream" uid="uid://b2kcx51cbnnt7" path="res://Audio/EnemyDamaged.wav" id="3_x1rqp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5f3p6"]
 radius = 4.0
@@ -19,3 +20,6 @@ region_rect = Rect2(90, 70, 9, 10)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_5f3p6")
+
+[node name="DamagedSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_x1rqp")

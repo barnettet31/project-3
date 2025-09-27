@@ -53,6 +53,7 @@ func _try_attack():
 func take_damage(amount: int):
 	curr_hp -= amount
 	_damage_flash()
+	$DamagedSound.play()
 	if curr_hp <= 0:
 		die()
 
