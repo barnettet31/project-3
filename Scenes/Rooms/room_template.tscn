@@ -88,6 +88,7 @@ shape = SubResource("RectangleShape2D_yiwfh")
 [node name="EntranceSouth" type="Node2D" parent="."]
 rotation = -3.1415927
 script = ExtResource("2_s3j8h")
+direction = 1
 
 [node name="Door" type="Node2D" parent="EntranceSouth"]
 
@@ -137,6 +138,7 @@ shape = SubResource("RectangleShape2D_yiwfh")
 [node name="EntranceWest" type="Node2D" parent="."]
 rotation = -1.5707964
 script = ExtResource("2_s3j8h")
+direction = 3
 
 [node name="Door" type="Node2D" parent="EntranceWest"]
 
@@ -186,6 +188,7 @@ shape = SubResource("RectangleShape2D_yiwfh")
 [node name="EntranceEast" type="Node2D" parent="."]
 rotation = 1.5707964
 script = ExtResource("2_s3j8h")
+direction = 2
 
 [node name="Door" type="Node2D" parent="EntranceEast"]
 
