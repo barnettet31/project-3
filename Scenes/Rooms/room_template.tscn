@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=4 uid="uid://b8pqow80ub5un"]
+[gd_scene load_steps=8 format=4 uid="uid://b8pqow80ub5un"]
 
 [ext_resource type="TileSet" uid="uid://baumjwro03ioe" path="res://Sprites/tileset.tres" id="1_11dti"]
 [ext_resource type="Script" uid="uid://dik5mraca5csy" path="res://Scripts/room.gd" id="1_s3j8h"]
 [ext_resource type="Script" uid="uid://ces1psc5gg4x4" path="res://Scripts/room_entrance.gd" id="2_s3j8h"]
 [ext_resource type="Texture2D" uid="uid://divmryxvl32mh" path="res://Sprites/Tiles.png" id="3_h1l6b"]
-[ext_resource type="PackedScene" uid="uid://dc22jp57db64h" path="res://Scenes/Enemies/enemy.tscn" id="5_h1l6b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iixi8"]
 size = Vector2(16, 8)
@@ -238,6 +237,3 @@ tile_set = ExtResource("1_11dti")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EntranceEast/Barrier"]
 shape = SubResource("RectangleShape2D_yiwfh")
-
-[node name="Enemy" parent="." instance=ExtResource("5_h1l6b")]
-position = Vector2(37, -34)

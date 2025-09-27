@@ -1,3 +1,4 @@
+class_name Enemy
 extends CharacterBody2D
 
 
@@ -55,4 +56,5 @@ func take_damage(amount: int):
 		die()
 
 func die():
+	GlobalSignals.OnDefeatEnemy.emit(self)
 	queue_free()
