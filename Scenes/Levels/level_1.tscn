@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ju1otv6txo0m"]
+[gd_scene load_steps=17 format=3 uid="uid://ju1otv6txo0m"]
 
 [ext_resource type="Script" uid="uid://kn20ukkdx2gu" path="res://Scripts/room_generation.gd" id="1_3mqfk"]
 [ext_resource type="PackedScene" uid="uid://csls4q0vjvqey" path="res://Scenes/player.tscn" id="1_4dpyx"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://iao8bkdfs3s8" path="res://Scenes/Rooms/room_enemy_3.tscn" id="5_hwvp3"]
 [ext_resource type="PackedScene" uid="uid://c7irh8rotw52w" path="res://Scenes/Rooms/room_enemy_4.tscn" id="6_afv7b"]
 [ext_resource type="PackedScene" uid="uid://b1ohcnw2irge5" path="res://Scenes/Rooms/room_item.tscn" id="7_rb0md"]
+[ext_resource type="PackedScene" uid="uid://cx66pjtryk10a" path="res://Scenes/Rooms/room_boss.tscn" id="8_tjl6l"]
 [ext_resource type="Script" uid="uid://dm8nvwcyuel10" path="res://Scripts/player_health_ui.gd" id="10_7r2dd"]
 [ext_resource type="Texture2D" uid="uid://cbm17r6wgxe0" path="res://Sprites/Items/heart_full.tres" id="10_afv7b"]
 [ext_resource type="Script" uid="uid://bbndji1jxvsf0" path="res://Scripts/mini_map.gd" id="10_hwvp3"]
@@ -25,6 +26,7 @@ script = ExtResource("1_3mqfk")
 first_room_scene = ExtResource("2_jv26f")
 room_scenes = Array[PackedScene]([ExtResource("3_rb0md"), ExtResource("4_u5ghp"), ExtResource("5_hwvp3"), ExtResource("6_afv7b"), ExtResource("7_rb0md")])
 player = NodePath("../player")
+boss_room = ExtResource("8_tjl6l")
 
 [node name="player" parent="." instance=ExtResource("1_4dpyx")]
 

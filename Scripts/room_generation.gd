@@ -15,10 +15,9 @@ var room_scene: PackedScene = preload("res://Scenes/Rooms/room_template.tscn")
 @export var first_room_scene: PackedScene 
 @export var room_scenes: Array[PackedScene]
 @export var player : CharacterBody2D
-
+@export var boss_room: PackedScene
 func  _ready() -> void:
 	_generate()
-	
 	
 func _generate():
 	room_count = 0
@@ -55,6 +54,10 @@ func _check_room(x:int, y:int, desired_direction: Vector2, is_first_room: bool =
 
 
 func _instantiate_rooms():
+	var boss_room_pos: Vector2 = _decide_boss_room()
+	
+	
+	
 	for x in range(map_size):
 		for y in range(map_size):
 			if _get_map(x, y) == false:
@@ -63,17 +66,25 @@ func _instantiate_rooms():
 			var is_first_room : bool = first_room_x == x and first_room_y == y
 			if is_first_room:
 				room = first_room_scene.instantiate()
+			elif x == boss_room_pos.x and y == boss_room_pos.y:
+				print(boss_room_pos, "is First room too", is_first_room)
+				room = boss_room.instantiate()
+				print("Boss room created", Vector2(x,y))
 			else:
 				room = room_scenes[randi_range(0, len(room_scenes) -1)].instantiate()
-			get_tree().root.add_child.call_deferred(room)
+			get_tree().root.get_node('/root/Main').add_child.call_deferred(room)
 			rooms.append(room)
 			room.global_position = Vector2(x, y) * room_pos_offset
 			if is_first_room: 
 				first_room = room
 				first_room.player_enter.call_deferred(Room.Direction.NORTH, player, true)
+			
 			room.initialize()
-	for room in rooms:	
+	for room in rooms:
+		
 		var map_pos: Vector2 = _get_map_index(room)
+		if(room.is_boss_room):
+			print("boss is in the set of rooms",map_pos)
 		var x = map_pos.x
 		var y = map_pos.y
 		if y  > 0 and _get_map(x, y - 1):
@@ -99,3 +110,17 @@ func _get_map(x:int, y:int)->bool:
 
 func _set_map(x : int, y : int, value : bool):
 	map[x + y * map_size] = value
+
+
+func _decide_boss_room()->Vector2:
+	var i = 0
+	while i < 100:
+		var x = randi_range(0, map_size -1)
+		var y = randi_range(0, map_size -1)
+		if first_room_x == x and first_room_y == y:
+			continue
+		if _get_map(x, y):
+			print("boss room assigned at:", Vector2(x,y))
+			return Vector2(x,y)
+	print("ERROR: Failed to find boss room position")
+	return Vector2.ZERO
