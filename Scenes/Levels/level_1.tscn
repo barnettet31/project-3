@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://ju1otv6txo0m"]
+[gd_scene load_steps=3 format=3 uid="uid://ju1otv6txo0m"]
 
 [ext_resource type="Script" uid="uid://kn20ukkdx2gu" path="res://Scripts/room_generation.gd" id="1_3mqfk"]
 [ext_resource type="PackedScene" uid="uid://csls4q0vjvqey" path="res://Scenes/player.tscn" id="1_4dpyx"]
-[ext_resource type="PackedScene" uid="uid://dcng2576cxrep" path="res://Scenes/Projectiles/projectile.tscn" id="3_3mqfk"]
 
 [node name="Main" type="Node2D"]
 
@@ -14,5 +13,3 @@ script = ExtResource("1_3mqfk")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(568, 319)
 rotation = 0.21262154
-
-[node name="Projectile" parent="." instance=ExtResource("3_3mqfk")]
